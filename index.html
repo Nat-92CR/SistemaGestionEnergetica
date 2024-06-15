@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión Energética para Edificios Inteligentes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Sistema de Gestión Energética para Edificios Inteligentes</h1>
+    </header>
+    <main>
+        <section id="login-section">
+            <h2>Inicio de Sesión</h2>
+            <form id="login-form">
+                <label for="login-username">Usuario:</label>
+                <input type="text" id="login-username" name="username" required>
+
+                <label for="login-password">Contraseña:</label>
+                <input type="password" id="login-password" name="password" required>
+
+                <button type="button" onclick="login()">Iniciar Sesión</button>
+            </form>
+            <p>¿No tienes una cuenta? <a href="#" onclick="showRegister()">Regístrate aquí</a></p>
+        </section>
+
+        <section id="register-section" style="display:none;">
+            <h2>Registro</h2>
+            <form id="register-form">
+                <label for="register-username">Usuario:</label>
+                <input type="text" id="register-username" name="username" required>
+
+                <label for="register-password">Contraseña:</label>
+                <input type="password" id="register-password" name="password" required>
+
+                <button type="button" onclick="register()">Registrarse</button>
+            </form>
+            <p>¿Ya tienes una cuenta? <a href="#" onclick="showLogin()">Inicia sesión aquí</a></p>
+        </section>
+
+        <section id="main-content" style="display:none;">
+            <h2>Bienvenido al Sistema de Gestión Energética</h2>
+
+            <h2>Configuración de Horarios y Modos de Ahorro</h2>
+            <form id="configuracion-form">
+                <label for="edificio-config">Seleccione el Edificio:</label>
+                <select id="edificio-config" name="edificio-config" onchange="cargarZonasConfiguracion()">
+                    <!-- Opciones generadas dinámicamente -->
+                </select>
+
+                <label for="zona-config">Seleccione la Zona:</label>
+                <select id="zona-config" name="zona-config" onchange="cargarDispositivosConfiguracion()">
+                    <!-- Opciones generadas dinámicamente -->
+                </select>
+
+                <label for="dispositivo-config">Seleccione el Dispositivo:</label>
+                <select id="dispositivo-config" name="dispositivo-config">
+                    <!-- Opciones generadas dinámicamente -->
+                </select>
+
+                <label for="horario">Configurar Horario:</label>
+                <input type="time" id="horario-inicio" name="horario-inicio">
+                <input type="time" id="horario-fin" name="horario-fin">
+
+                <label for="modo-ahorro">Modo de Ahorro:</label>
+                <select id="modo-ahorro" name="modo-ahorro">
+                    <option value="apagado">Apagado</option>
+                    <option value="bajo-consumo">Bajo Consumo</option>
+                    <option value="normal">Normal</option>
+                </select>
+
+                <button type="button" onclick="guardarConfiguracion()">Guardar Configuración</button>
+            </form>
+
+            <h2>Control de Consumo Energético</h2>
+            <form id="consumo-form">
+                <label for="edificio">Seleccione el Edificio:</label>
+                <select id="edificio" name="edificio" onchange="cargarZonas()">
+                    <!-- Opciones generadas dinámicamente -->
+                </select>
+
+                <label for="zona">Seleccione la Zona:</label>
+                <select id="zona" name="zona" onchange="cargarDispositivos()">
+                    <!-- Opciones generadas dinámicamente -->
+                </select>
+
+                <label for="dispositivo">Seleccione el Dispositivo:</label>
+                <select id="dispositivo" name="dispositivo">
+                    <!-- Opciones generadas dinámicamente -->
+                </select>
+
+                <button type="button" onclick="verConsumo()">Ver Consumo</button>
+            </form>
+            <div id="resultados">
+                <!-- Resultados del consumo energético -->
+            </div>
+
+            <button type="button" onclick="logout()">Cerrar Sesión</button>
+        </section>
+
+        <section id="configuracion">
+
+        </section>
+        <section id="consumo">
+
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
